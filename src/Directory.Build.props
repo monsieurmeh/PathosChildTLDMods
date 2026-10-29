@@ -19,4 +19,11 @@
     <ModsPath>$(GamePath)\Mods</ModsPath>
     <ReleasesPath>$(MSBuildThisFileDirectory)\..\_releases</ReleasesPath>
   </PropertyGroup>
+
+  <!-- compile against the current game assemblies only, not the older ones ModData and ModSettings depend on -->
+  <Target Name="UseCurrentGameAssemblies" AfterTargets="ResolvePackageAssets">
+    <ItemGroup>
+      <ResolvedCompileFileDefinitions Remove="@(ResolvedCompileFileDefinitions)" Condition="$([System.String]::Copy('%(NuGetPackageId)').EndsWith('.Il2CppAssemblies.Windows')) and '%(NuGetPackageId)' != 'MonsieurMeh.Modding.TLD.Il2CppAssemblies.Windows'" />
+    </ItemGroup>
+  </Target>
 </Project>

@@ -4,7 +4,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="STBlade.Modding.TLD.Il2CppAssemblies.Windows" />
+    <PackageReference Include="MonsieurMeh.Modding.TLD.Il2CppAssemblies.Windows" />
     <PackageReference Include="STBlade.Modding.TLD.ModSettings" />
   </ItemGroup>
 

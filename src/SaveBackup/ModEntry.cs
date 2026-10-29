@@ -73,7 +73,7 @@ public class ModEntry : MelonMod
     public override void OnLateInitializeMelon()
     {
         this.GameVersion = GameManager.GetVersionString().Trim();
-        this.MelonLoaderVersion = BuildInfo.Version;
+        this.MelonLoaderVersion = MelonLoader.Properties.BuildInfo.Version;
 
         Task
             .Run(this.MoveLegacyBackups)

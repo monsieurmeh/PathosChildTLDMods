@@ -1,4 +1,5 @@
 using Il2Cpp;
+using Il2CppTLD.AddressableAssets;
 using Il2CppTLD.Scenes;
 using UnityEngine.SceneManagement;
 using UnitySceneManager = UnityEngine.SceneManagement.SceneManager;
@@ -33,7 +34,17 @@ internal static class SceneHelper
     /// <summary>Try to get the region containing the current scene.</summary>
     public static RegionSpecification? TryGetRegion()
     {
-        return GameManager.TryGetCurrentRegion();
+        string? name = SceneHelper.TryGetRegionName();
+        return name is not null
+            ? AssetHelper.SafeLoadAssetAsync<RegionSpecification>(name).WaitForCompletion()
+            : null;
+    }
+
+    /// <summary>Try to get the internal name of the region containing the current scene, like <c>TracksRegion</c>.</summary>
+    public static string? TryGetRegionName()
+    {
+        string? name = GameManager.TryGetCurrentRegionName();
+        return !string.IsNullOrEmpty(name) ? name : null;
     }
 
     /// <summary>Get the active scene name.</summary>
