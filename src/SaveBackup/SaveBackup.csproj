@@ -5,7 +5,9 @@
 
   <ItemGroup>
     <PackageReference Include="MonsieurMeh.Modding.TLD.Il2CppAssemblies.Windows" />
-    <PackageReference Include="STBlade.Modding.TLD.ModSettings" />
+    <Reference Include="ModSettings">
+      <HintPath>$(ModsPath)\ModSettings.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <ItemGroup>

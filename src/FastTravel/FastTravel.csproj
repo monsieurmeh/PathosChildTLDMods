@@ -5,8 +5,12 @@
 
   <ItemGroup>
     <PackageReference Include="MonsieurMeh.Modding.TLD.Il2CppAssemblies.Windows" />
-    <PackageReference Include="stblade.Modding.TLD.ModData" />
-    <PackageReference Include="STBlade.Modding.TLD.ModSettings" />
+    <Reference Include="ModData">
+      <HintPath>$(ModsPath)\ModData.dll</HintPath>
+    </Reference>
+    <Reference Include="ModSettings">
+      <HintPath>$(ModsPath)\ModSettings.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">

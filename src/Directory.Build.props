@@ -20,10 +20,10 @@
     <ReleasesPath>$(MSBuildThisFileDirectory)\..\_releases</ReleasesPath>
   </PropertyGroup>
 
-  <!-- compile against the current game assemblies only, not the older ones ModData and ModSettings depend on -->
-  <Target Name="UseCurrentGameAssemblies" AfterTargets="ResolvePackageAssets">
-    <ItemGroup>
-      <ResolvedCompileFileDefinitions Remove="@(ResolvedCompileFileDefinitions)" Condition="$([System.String]::Copy('%(NuGetPackageId)').EndsWith('.Il2CppAssemblies.Windows')) and '%(NuGetPackageId)' != 'MonsieurMeh.Modding.TLD.Il2CppAssemblies.Windows'" />
-    </ItemGroup>
-  </Target>
+  <!-- don't copy referenced mod DLLs (like ModSettings) into the build output -->
+  <ItemDefinitionGroup>
+    <Reference>
+      <Private>False</Private>
+    </Reference>
+  </ItemDefinitionGroup>
 </Project>
